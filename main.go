@@ -17,11 +17,13 @@ func main() {
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
 	hh := handlers.NewHello(l)
 	gh := handlers.NewGoodbye(l)
+	ph := handlers.NewProduct(l)
 	// now to register this handler into our serveMux, we need to create the serveMux
 	sm := http.NewServeMux()
 	// and add a handler to it
 	sm.Handle("/", hh)
 	sm.Handle("/goodbye", gh)
+	sm.Handle("/products", ph)
 
 	// Now we will create our own golang server so we can tune it more precisely
 	// server is a type which has some fields: Addr, Handler, TLSConfig, ReadTimeout, WriteTimeout...
@@ -70,3 +72,4 @@ func main() {
 	// we bind our serveMux handler to our server	
 	// http.ListenAndServe(":3000", sm)
 }
+
