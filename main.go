@@ -15,13 +15,13 @@ func main() {
 	// let's make a handler
 	// first we'll make a logger which we'll pass into our NewHello constructor 
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
-	hh := handlers.NewHello(l)
+	//hh := handlers.NewHello(l)
 	gh := handlers.NewGoodbye(l)
 	ph := handlers.NewProduct(l)
 	// now to register this handler into our serveMux, we need to create the serveMux
 	sm := http.NewServeMux()
 	// and add a handler to it
-	sm.Handle("/", hh)
+	sm.Handle("/", ph)
 	sm.Handle("/goodbye", gh)
 	sm.Handle("/products", ph)
 
@@ -73,3 +73,7 @@ func main() {
 	// http.ListenAndServe(":3000", sm)
 }
 
+//moved functioonale from ServeHttp to GetProducts in products handler
+//added POST handler, added logging to products handlers 
+//added PUT handler, implemented picking up id from URI using standard library functions only 
+//moved products handler to "/"
