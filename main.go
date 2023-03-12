@@ -72,8 +72,3 @@ func main() {
 	// we bind our serveMux handler to our server	
 	// http.ListenAndServe(":3000", sm)
 }
-
-//moved functioonale from ServeHttp to GetProducts in products handler
-//added POST handler, added logging to products handlers 
-//added PUT handler, implemented picking up id from URI using standard library functions only 
-//moved products handler to "/"
